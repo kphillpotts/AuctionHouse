@@ -52,6 +52,12 @@ namespace AuctionHouse.DataStore.Mock.Stores
 
             List<string> condition = new List<string> { "new", "used", "broken", "only driven once" };
 
+            List<string> imageUrls = new List<string>
+            {
+                "http://dumouchelle.com/lotImages/201606/1200/2016060001_1.jpg",
+                "http://dumouchelle.com/lotImages/201606/1200/2016060011_1.jpg"
+            };
+
             // generate items for each auction
             foreach (var auction in await auctionStore.GetItemsAsync())
             {

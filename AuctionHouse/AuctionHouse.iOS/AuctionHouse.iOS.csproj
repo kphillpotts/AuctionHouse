@@ -84,10 +84,13 @@
     <CodesignKey>iPhone Distribution</CodesignKey>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="App.cs" />
+    <Compile Include="AuctionViewController.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
     <None Include="GettingStarted.Xamarin" />
     <None Include="Info.plist" />
+    <Compile Include="MainViewController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -109,7 +112,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AuctionHouse.DataStore.Abstractions\AuctionHouse.DataStore.Abstractions.csproj">
-      <Project>{3e6332ba-61ca-48bb-8a75-137a61867924}</Project>
+      <Project>{3E6332BA-61CA-48BB-8A75-137A61867924}</Project>
       <Name>AuctionHouse.DataStore.Abstractions</Name>
     </ProjectReference>
     <ProjectReference Include="..\AuctionHouse.DataStore.Mock\AuctionHouse.DataStore.Mock.csproj">
@@ -117,6 +120,5 @@
       <Name>AuctionHouse.DataStore.Mock</Name>
     </ProjectReference>
   </ItemGroup>
-  <Import Project="..\AuctionHouse.DataObjects\AuctionHouse.DataObjects.projitems" Label="Shared" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

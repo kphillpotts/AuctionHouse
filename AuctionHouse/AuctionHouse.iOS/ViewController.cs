@@ -1,5 +1,4 @@
 ﻿using AuctionHouse.DataObjects;
-using AuctionHouse.DataStore.Abstractions;
 using AuctionHouse.DataStore.Mock.Stores;
 using System;
 
@@ -17,12 +16,6 @@ namespace AuctionHouse.iOS
         {
             base.ViewDidLoad();
             // Perform any additional setup after loading the view, typically from a nib.
-
-            IAuctionStore b = new AuctionHouse.DataStore.Mock.Stores.AuctionStore();
-            IAuctionItemStore c = new AuctionHouse.DataStore.Mock.Stores.AuctionItemStore(b);
-
-            var x = await c.GetItemsAsync();
-
 
         }
 

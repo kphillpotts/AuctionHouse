@@ -22,5 +22,7 @@ namespace AuctionHouse.DataObjects
 
         public string Condition { get; set; }
 
+        public string Image { get; set; }
+
     }
 }

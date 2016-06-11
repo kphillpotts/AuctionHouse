@@ -19,7 +19,6 @@ Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		AuctionHouse.DataObjects\AuctionHouse.DataObjects.projitems*{c9d45552-f978-4a85-a646-8e34f592756a}*SharedItemsImports = 13
 		AuctionHouse.DataObjects\AuctionHouse.DataObjects.projitems*{3e6332ba-61ca-48bb-8a75-137a61867924}*SharedItemsImports = 4
-		AuctionHouse.DataObjects\AuctionHouse.DataObjects.projitems*{a86bbe28-dfdb-458b-8244-240994a00396}*SharedItemsImports = 4
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Ad-Hoc|Any CPU = Ad-Hoc|Any CPU
