@@ -85,19 +85,25 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="App.cs" />
-    <Compile Include="AuctionViewController.cs" />
+    <Compile Include="AuctionItemViewController.cs" />
+    <Compile Include="AuctionItemViewController.designer.cs">
+      <DependentUpon>AuctionItemViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AuctionListViewController.cs" />
+    <Compile Include="AuctionListViewController.designer.cs">
+      <DependentUpon>AuctionListViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ItemDetailsViewController.cs" />
+    <Compile Include="ItemDetailsViewController.designer.cs">
+      <DependentUpon>ItemDetailsViewController.cs</DependentUpon>
+    </Compile>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
     <None Include="GettingStarted.Xamarin" />
     <None Include="Info.plist" />
-    <Compile Include="MainViewController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ViewController.designer.cs">
-      <DependentUpon>ViewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ViewController.cs" />
     <InterfaceDefinition Include="Main.storyboard" />
     <InterfaceDefinition Include="Resources\LaunchScreen.xib" />
   </ItemGroup>

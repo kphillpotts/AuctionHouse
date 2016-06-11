@@ -1,51 +1,37 @@
-using System;
-using System.Drawing;
-using CoreFoundation;
-using UIKit;
 using Foundation;
+using System;
 using System.Collections.Generic;
-using System.Linq;
+using UIKit;
 using AuctionHouse.DataObjects;
-
+using System.Linq;
 namespace AuctionHouse.iOS
-{ 
-    public class MainViewController : UITableViewController
+{
+    public partial class AuctionListViewController : UITableViewController
     {
-        public MainViewController()
+        public AuctionListViewController (IntPtr handle) : base (handle)
         {
-            
-
-        }
-
-        public override void DidReceiveMemoryWarning()
-        {
-            // Releases the view if it doesn't have a superview.
-            base.DidReceiveMemoryWarning();
-
-            // Release any cached data, images, etc that aren't in use.
         }
 
         List<DataObjects.Auction> auctions;
 
-        public async override void ViewDidLoad()
+        public async void GetData()
         {
-
-            base.ViewDidLoad();
-
-            // Perform any additional setup after loading the view
-            this.NavigationItem.Title = "Auctions";
-
             var auctionList = await App.StoreManager.AuctionStore.GetItemsAsync();
             auctions = auctionList.ToList();
         }
 
-        public override nint RowsInSection(UITableView tableView, nint section)
-        {
+        const string AuctionCell = "AuctionCell";
 
-            return auctions.Count;
+
+        public override async void ViewDidLoad()
+        {
+            base.ViewDidLoad();
+            // Perform any additional setup after loading the view
+            this.NavigationItem.Title = "Auctions";
+
+            GetData();
         }
 
-        const string AuctionCell = "AuctionCell";
 
         public override UITableViewCell GetCell(UITableView tableView, NSIndexPath indexPath)
         {
@@ -67,12 +53,22 @@ namespace AuctionHouse.iOS
         {
             Auction auction = auctions[indexPath.Row];
 
-            var itemListController = new AuctionViewController(auction.Id);
-
-            this.NavigationController.PushViewController(itemListController, true);
+            this.PerformSegue("ShowItemsSegue", this);
         }
 
+        public override nint RowsInSection(UITableView tableview, nint section)
+        {
+            return auctions.Count;
+        }
 
+        public override void PrepareForSegue(UIStoryboardSegue segue, NSObject sender)
+        {
+            Auction auction = auctions[this.TableView.IndexPathForSelectedRow.Row];
+            var itemListController = (AuctionItemViewController)segue.DestinationViewController;
+            itemListController.Auction = auction;
+        }
 
+        
     }
+
 }
