@@ -34,5 +34,9 @@ namespace AuctionHouseService.Models
                 new AttributeToColumnAnnotationConvention<TableColumnAttribute, string>(
                     "ServiceTableColumn", (property, attributes) => attributes.Single().ColumnType.ToString()));
         }
+
+        public System.Data.Entity.DbSet<AuctionHouseService.DataObjects.Auction> Auctions { get; set; }
+
+        public System.Data.Entity.DbSet<AuctionHouseService.DataObjects.AuctionItem> AuctionItems { get; set; }
     }
 }
