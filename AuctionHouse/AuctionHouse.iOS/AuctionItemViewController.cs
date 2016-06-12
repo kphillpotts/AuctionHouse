@@ -4,6 +4,8 @@ using UIKit;
 using System.Linq;
 using System.Collections.Generic;
 using AuctionHouse.DataObjects;
+using FFImageLoading;
+using System.Threading.Tasks;
 
 namespace AuctionHouse.iOS
 {
@@ -37,19 +39,15 @@ namespace AuctionHouse.iOS
 
         public override UITableViewCell GetCell(UITableView tableView, NSIndexPath indexPath)
         {
-            var cell = tableView.DequeueReusableCell(ItemCell);
-            if (cell == null)
-            {
-                cell = new UITableViewCell(UITableViewCellStyle.Subtitle, ItemCell);
-            }
+            var cell = tableView.DequeueReusableCell("AuctionItemCell") as AuctionItemCell;
 
             AuctionItem item = items[indexPath.Row];
 
-            cell.TextLabel.Text = item.Description;
-            cell.DetailTextLabel.Text = item.Details;
-            cell.Accessory = UITableViewCellAccessory.DisclosureIndicator;
+            cell.Update(item);
+
             return cell;
         }
+
 
         public override void RowSelected(UITableView tableView, NSIndexPath indexPath)
         {

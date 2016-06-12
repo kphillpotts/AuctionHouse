@@ -55,7 +55,8 @@ namespace AuctionHouse.DataStore.Mock.Stores
             List<string> imageUrls = new List<string>
             {
                 "http://dumouchelle.com/lotImages/201606/1200/2016060001_1.jpg",
-                "http://dumouchelle.com/lotImages/201606/1200/2016060011_1.jpg"
+                "http://dumouchelle.com/lotImages/201606/1200/2016060001_2.jpg",
+                "http://dumouchelle.com/lotImages/201606/1200/2016060001_3.jpg",
             };
 
             // generate items for each auction
@@ -73,11 +74,14 @@ namespace AuctionHouse.DataStore.Mock.Stores
                     item.Details = "A bunch of details for item " + i;
                     item.AuctionId = auction.Id;
                     item.Condition = condition.SelectRandom();
+                    item.Image = imageUrls.SelectRandom();
 
                     // add to mock collection
                     auctionItems.Add(item);
                 }
             }
+
+            isInitialized = true;
             
         }
     }
