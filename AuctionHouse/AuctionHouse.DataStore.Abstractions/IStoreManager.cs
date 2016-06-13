@@ -8,7 +8,7 @@ namespace AuctionHouse.DataStore.Abstractions
 {
     public interface IStoreManager
     {
-        bool IsInitialized { get; }
+        bool IsInitialized { get; set; }
         Task InitializeAsync();
         IAuctionStore AuctionStore { get; }
         IAuctionItemStore AuctionItemStore {get;}

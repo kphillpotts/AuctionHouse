@@ -42,12 +42,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Stores\AuctionItemStore.cs" />
-    <Compile Include="Class1.cs" />
     <Compile Include="Helpers\CollectionExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Stores\AuctionStore.cs" />
     <Compile Include="Stores\BaseStore.cs" />
-    <Compile Include="Stores\StoreManager.cs" />
+    <Compile Include="StoreManager.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -16,6 +16,8 @@ namespace AuctionHouse.iOS
         {
             if (isMock)
                 StoreManager = new AuctionHouse.DataStore.Mock.Stores.StoreManager();
+            else
+                StoreManager = new AuctionHouse.DataStore.Azure.StoreManager();
         }
     }
 }

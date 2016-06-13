@@ -5,11 +5,11 @@
     <MinimumVisualStudioVersion>10.0</MinimumVisualStudioVersion>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{3E6332BA-61CA-48BB-8A75-137A61867924}</ProjectGuid>
+    <ProjectGuid>{B2407CB8-72F9-4F96-A7F3-6914300A28FF}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>AuctionHouse.DataStore.Abstractions</RootNamespace>
-    <AssemblyName>AuctionHouse.DataStore.Abstractions</AssemblyName>
+    <RootNamespace>AuctionHouse.DataStore.Azure</RootNamespace>
+    <AssemblyName>AuctionHouse.DataStore.Azure</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -37,15 +37,22 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .NET Framework is automatically included -->
-    <None Include="app.config" />
-    <None Include="packages.config" />
+    <ProjectReference Include="..\AuctionHouse.DataStore.Abstractions\AuctionHouse.DataStore.Abstractions.csproj">
+      <Project>{3e6332ba-61ca-48bb-8a75-137a61867924}</Project>
+      <Name>AuctionHouse.DataStore.Abstractions</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IAuctionItemStore.cs" />
-    <Compile Include="IAuctionStore.cs" />
-    <Compile Include="IBaseStore.cs" />
-    <Compile Include="IStoreManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StoreManager.cs" />
+    <Compile Include="Stores\AuctionItemStore.cs" />
+    <Compile Include="Stores\AuctionStore.cs" />
+    <Compile Include="Stores\BaseStore.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.WindowsAzure.Mobile, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -73,7 +80,6 @@
       <Private>True</Private>
     </Reference>
   </ItemGroup>
-  <Import Project="..\AuctionHouse.DataObjects\AuctionHouse.DataObjects.projitems" Label="Shared" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

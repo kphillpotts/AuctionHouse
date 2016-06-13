@@ -15,20 +15,41 @@ namespace AuctionHouse.iOS
         {
         }
 
-        public override void ViewDidLoad()
+        public async override void ViewDidLoad()
         {
             base.ViewDidLoad();
-            GetData();
+            await GetData();
+
+            // just some random code to fake up a record being added
+            this.NavigationItem.RightBarButtonItem = new UIBarButtonItem(UIBarButtonSystemItem.Add, async delegate
+            {
+
+                Random random = new Random();
+                AuctionItem item = new AuctionItem();
+                item.LotNumber = items.Count + 1;
+                item.LowerEstimate = random.Next(100, 10000);
+                item.UpperEstimate = item.LowerEstimate * 1.5m;
+                item.Description = "Some Description for item " + item.LotNumber;
+                item.Details = "A bunch of details for item " + item.LotNumber;
+                item.AuctionId = Auction.Id;
+                item.Condition = "new";
+                item.Image = @"http://dumouchelle.com/lotImages/201606/1200/2016060001_1.jpg";
+
+                await App.StoreManager.AuctionItemStore.InsertAsync(item);
+
+                await GetData();
+            });
         }
 
-        private async void GetData()
+        private async Task GetData()
         {
             var itemList = await App.StoreManager.AuctionItemStore.GetItemsForAuctionAsync(Auction.Id);
             items = itemList.ToList();
+            TableView.ReloadData();
         }
 
         public Auction Auction { get; set; }
-        List<AuctionHouse.DataObjects.AuctionItem> items;
+        List<AuctionHouse.DataObjects.AuctionItem> items = new List<AuctionItem>();
 
         public override nint RowsInSection(UITableView tableView, nint section)
         {

@@ -16,7 +16,7 @@ namespace AuctionHouse.DataStore.Mock.Stores
         {
             get
             {
-                if (!isInitialized)
+                if (!IsInitialized)
                     InitializeAsync();
 
                 return auctionItemStore; 
@@ -27,29 +27,21 @@ namespace AuctionHouse.DataStore.Mock.Stores
         {
             get
             {
-                if (!isInitialized)
+                if (!IsInitialized)
                     InitializeAsync();
 
                 return auctionStore;
             }
         }
 
-        bool isInitialized = false;
-
-        public bool IsInitialized
-        {
-            get
-            {
-                return isInitialized;
-            }
-        }
+        public bool IsInitialized { get; set; }
 
         public  async Task InitializeAsync()
         {
-            if (isInitialized) return;
+            if (IsInitialized) return;
             auctionStore = new Mock.Stores.AuctionStore();
             auctionItemStore = new Mock.Stores.AuctionItemStore(auctionStore);
-            isInitialized = true;
+            IsInitialized = true;
         }
     }
 }

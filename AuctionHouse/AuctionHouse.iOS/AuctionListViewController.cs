@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using UIKit;
 using AuctionHouse.DataObjects;
 using System.Linq;
+using System.Threading.Tasks;
+
 namespace AuctionHouse.iOS
 {
     public partial class AuctionListViewController : UITableViewController
@@ -12,12 +14,13 @@ namespace AuctionHouse.iOS
         {
         }
 
-        List<DataObjects.Auction> auctions;
+        List<DataObjects.Auction> auctions = new List<Auction>();
 
-        public async void GetData()
+        public async Task GetData()
         {
             var auctionList = await App.StoreManager.AuctionStore.GetItemsAsync();
             auctions = auctionList.ToList();
+            TableView.ReloadData();
         }
 
         const string AuctionCell = "AuctionCell";
@@ -28,8 +31,18 @@ namespace AuctionHouse.iOS
             base.ViewDidLoad();
             // Perform any additional setup after loading the view
             this.NavigationItem.Title = "Auctions";
+            this.NavigationItem.RightBarButtonItem = new UIBarButtonItem(UIBarButtonSystemItem.Add, async delegate
+            {
 
-            GetData();
+                var newAuction = new Auction();
+                newAuction.Location = "Melbourne";
+                newAuction.AuctionDate = DateTime.Now.AddDays(1);
+                await App.StoreManager.AuctionStore.InsertAsync(newAuction);
+                await GetData();
+
+            });
+
+            await GetData();
         }
 
 
